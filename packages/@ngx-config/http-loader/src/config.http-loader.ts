@@ -4,11 +4,12 @@ import { Http } from '@angular/http';
 // libs
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
-import { ConfigLoader } from '@ngx-config/core';
+import { ConfigLoader } from 'packages/@ngx-config/core';
 
 export class ConfigHttpLoader implements ConfigLoader {
   constructor(private readonly http: Http,
-              private readonly endpoint: string = '/config.json') {
+              private readonly endpoint: string = '/config.json',
+              public readonly key: string = '') {
   }
 
   loadSettings(): any {

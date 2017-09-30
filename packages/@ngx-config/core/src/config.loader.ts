@@ -1,4 +1,5 @@
 export abstract class ConfigLoader {
+  key?: string;
   abstract loadSettings(): any;
 }
 
