@@ -4,8 +4,15 @@ import { Injectable } from '@angular/core';
 // module
 import { ConfigLoader } from './config.loader';
 
-type MergeHandler = (oldSetting: any, extraSetting: any, key: string) => { newSetting: any };
-
+function mergeSetting(oldSetting: any, extraSetting: any, key: string): any {
+  let newExtraSetting = extraSetting;
+  // tslint:disable-next-line:curly
+  if (key) { newExtraSetting = { [key]: extraSetting }; }
+  // tslint:disable-next-line:curly
+  if (oldSetting) { return { ...oldSetting, ...newExtraSetting }; } else {
+    return newExtraSetting;
+  }
+}
 @Injectable()
 export class ConfigService {
   protected settings: any;
@@ -17,13 +24,13 @@ export class ConfigService {
     return this.loader.loadSettings()
       .then((res: any) => this.settings = res);
   }
-  load(loader: ConfigLoader, mergeHandler?: MergeHandler): any {
+  load(loader: ConfigLoader, mergeHandler?: (oldSetting: any, extraSetting: any, key: string) => any): any {
     return loader.loadSettings()
       .then((res: any) => {
         if (!res) return;
         const extraSetting = res;
         const key = loader.key || '';
-        const mergeFunction = (typeof mergeHandler === 'function') ? mergeHandler : this.mergeSetting;
+        const mergeFunction = (typeof mergeHandler === 'function') ? mergeHandler : mergeSetting;
         this.settings = mergeFunction(this.settings, extraSetting, key);
       });
   }
@@ -47,13 +54,5 @@ export class ConfigService {
 
     return result;
   }
-  protected mergeSetting(oldSetting: any, extraSetting: any, key: string): any {
-    let newExtraSetting = extraSetting;
-    // tslint:disable-next-line:curly
-    if (key) { newExtraSetting = { [key]: extraSetting }; }
-    // tslint:disable-next-line:curly
-    if (oldSetting) { return { ...oldSetting, ...newExtraSetting }; } else {
-      return newExtraSetting;
-    }
-  }
+  
 }
