@@ -4,7 +4,7 @@ import { Http } from '@angular/http';
 // libs
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
-import { ConfigLoader } from '@ngx-config/core';
+import { ConfigLoader } from './config.loader';
 
 export class ConfigHttpLoader implements ConfigLoader {
   constructor(private readonly http: Http,
