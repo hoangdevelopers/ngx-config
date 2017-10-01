@@ -1,5 +1,5 @@
 {
-  "name": "ncc/@ngx-config-core",
+  "name": "@ncc/ngx-config",
   "version": "1.0.1",
   "description": "Configuration utility for Angular",
   "repository": {
