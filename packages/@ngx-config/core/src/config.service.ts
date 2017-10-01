@@ -36,11 +36,9 @@ export class ConfigService {
   }
 
   getSettings(key?: string | Array<string>, defaultValue?: any): any {
-    if (!key || (Array.isArray(key) && !key[0]))
-      return this.settings;
+    if (!key || (Array.isArray(key) && !key[0])) return this.settings;
 
-    if (!Array.isArray(key))
-      key = key.split('.');
+    if (!Array.isArray(key)) key = key.split('.');
 
     let result = key
       .reduce((acc: any, current: string) => acc && acc[current], this.settings);
@@ -48,11 +46,14 @@ export class ConfigService {
     if (result === undefined) {
       result = defaultValue;
 
-      if (result === undefined)
-        throw new Error(`No setting found with the specified key [${key.join('/')}]!`);
+      if (result === undefined) {
+        console.error(`No setting found with the specified key [${key.join('/')}]!`);
+
+        return undefined;
+      }
     }
 
     return result;
   }
-  
+
 }

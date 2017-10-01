@@ -5,6 +5,7 @@ import { APP_INITIALIZER, ModuleWithProviders, NgModule, Optional, SkipSelf } fr
 import { ConfigLoader, ConfigStaticLoader } from './src/config.loader';
 import { ConfigPipe } from './src/config.pipe';
 import { ConfigService } from './src/config.service';
+import { ConfigGetPipe } from './src/config-get.pipe';
 
 export * from './src/config.loader';
 export * from './src/config.pipe';
@@ -23,8 +24,8 @@ export function initializerFactory(config: ConfigService): any {
 }
 
 @NgModule({
-  declarations: [ConfigPipe],
-  exports: [ConfigPipe]
+  declarations: [ConfigPipe, ConfigGetPipe],
+  exports: [ConfigPipe, ConfigGetPipe]
 })
 export class ConfigModule {
   static forRoot(configuredProvider: any = {
