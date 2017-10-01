@@ -22,6 +22,7 @@
     "email": "me@fulls1z3.com"
   },
   "license": "MIT",
+  "private": false,
   "bugs": {
     "url": "https://github.com/hoangdevelopers/ngx-config/issues"
   },
