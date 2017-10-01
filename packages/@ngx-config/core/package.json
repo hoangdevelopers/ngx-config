@@ -1,10 +1,10 @@
 {
-  "name": "@ncc/ngx-config/core",
+  "name": "ncc/@ngx-config-core",
   "version": "1.0.1",
   "description": "Configuration utility for Angular",
   "repository": {
     "type": "git",
-    "url": "https://github.com/fulls1z3/ngx-config.git"
+    "url": "https://hoangdevelopers/ngx-config/ngx-config.git"
   },
   "keywords": [
     "app initializer",
@@ -14,7 +14,8 @@
     "settings",
     "APP_INITIALIZER",
     "config",
-    "angular"
+    "angular",
+    "ncc"
   ],
   "author": {
     "name": "Burak Tasci",
@@ -22,9 +23,9 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/fulls1z3/ngx-config/issues"
+    "url": "https://github.com/hoangdevelopers/ngx-config/issues"
   },
-  "homepage": "https://github.com/fulls1z3/ngx-config/tree/master/packages/@ngx-config/core#readme",
+  "homepage": "https://github.com/hoangdevelopers/ngx-config/tree/master/packages/@ngx-config/core#readme",
   "main": "./bundles/core.umd.js",
   "module": "./@ngx-config/core.es5.js",
   "es2015": "./@ngx-config/core.js",
